@@ -17,5 +17,3 @@ All development branches stem from and (re-)integrate here.
 [![Build Status](https://travis-ci.org/experimental-platform/platform-mysql.svg?branch=master)](https://travis-ci.org/experimental-platform/platform-mysql)
 
 This is the base for α-channel releases.
-
--- build me
