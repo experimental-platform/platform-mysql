@@ -18,14 +18,14 @@ docker build --pull -t "${IMAGE_NAME}" .
 
 echo "Starting service platform-${SERVICE_NAME}..."
 docker run \
-  --cidfile="${IMAGE_NAME}.cid" \
+  --cidfile="${SERVICE_NAME}.cid" \
   --name "platform-${SERVICE_NAME}" \
   --env MYSQL_ALLOW_EMPTY_PASSWORD="1" \
   --env MYSQL_DATABASE="test" \
   --detach \
   "${IMAGE_NAME}"
 
-CONTAINER_ID=`cat "${IMAGE_NAME}.cid"`
+CONTAINER_ID=`cat "${SERVICE_NAME}.cid"`
 
 trap cleanup EXIT
 echo "${IMAGE_NAME}: +${CONTAINER_ID}"
