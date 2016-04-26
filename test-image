@@ -6,27 +6,20 @@ MYSQL_PORT="3306"
 SERVICE_NAME=`basename $(pwd) | sed 's/^platform-//'`
 IMAGE_NAME="$1"
 
-NETWORK_NAME="test-${RANDOM}"
-
 set -e
 
 function cleanup {
   echo "${IMAGE_NAME}: -$(docker rm $(docker kill ${CONTAINER_ID}))"
   rm "${IMAGE_NAME}.cid"
-  docker network rm "${NETWORK_NAME}"
 }
 
 echo "Building image ${IMAGE_NAME}..."
 docker build --pull -t "${IMAGE_NAME}" .
 
-echo "Setting up network ${NETWORK_NAME}..."
-docker network create --driver=bridge "${NETWORK_NAME}"
-
 echo "Starting service platform-${SERVICE_NAME}..."
 docker run \
   --cidfile="${IMAGE_NAME}.cid" \
   --name "platform-${SERVICE_NAME}" \
-  --net "${NETWORK_NAME}" \
   --env MYSQL_ALLOW_EMPTY_PASSWORD="1" \
   --env MYSQL_DATABASE="test" \
   --detach \
