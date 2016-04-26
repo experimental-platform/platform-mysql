@@ -13,8 +13,8 @@ function cleanup {
   rm "${SERVICE_NAME}.cid"
 }
 
-echo "Building image ${IMAGE_NAME}..."
-docker build --pull -t "${IMAGE_NAME}" .
+#echo "Building image ${IMAGE_NAME}..."
+#docker build --pull -t "${IMAGE_NAME}" .
 
 echo "Starting service platform-${SERVICE_NAME}..."
 docker run \
