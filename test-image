@@ -10,7 +10,7 @@ set -e
 
 function cleanup {
   echo "${IMAGE_NAME}: -$(docker rm $(docker kill ${CONTAINER_ID}))"
-  rm "${IMAGE_NAME}.cid"
+  rm "${SERVICE_NAME}.cid"
 }
 
 echo "Building image ${IMAGE_NAME}..."
