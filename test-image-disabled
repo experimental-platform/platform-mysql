@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+#
+# TODO Temporarily disabled because of an issue with our build script
+# that fails to push the image on passed test suite
+#
+
 MYSQL_PASSWORD="test"
 MYSQL_PORT="3306"
 
